@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+
+/**
+ * 
+ * Authen Route start
+ */
+Route::prefix('auth')->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('/sign-up', 'signUp');
+        Route::post('/sign-in', 'signIn');
+        Route::post('/sign-out', 'signOut');
+    });
+});
+/**
+ * 
+ * Authen Route end
+ */
