@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/sign-in', function () {
+    return view('user.signin');
+});
 
 /**
  * 
@@ -25,6 +28,7 @@ Route::get('/', function () {
  */
 Route::prefix('auth')->group(function () {
     Route::controller(AuthController::class)->group(function () {
+        Route::get('/sign-in', 'signUp');
         Route::post('/sign-up', 'signUp');
         Route::post('/sign-in', 'signIn');
         Route::post('/sign-out', 'signOut');
